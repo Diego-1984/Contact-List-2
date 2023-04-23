@@ -11,14 +11,42 @@ export const Demo = () => {
 	return (
 		<div className="container-fluid bg-black">	
 			
-			<div className="container w-75 vh-100 bg-white d-flex justify-content-center">
-				<div className="row"></div>				
-				<h1>Añadir nuevo contacto</h1>							
-				<div className="footer"><Link to="/">
+			<div className="container w-50 vh-100 bg-white">
+							
+				<div className="titulo d-flex justify-content-center p-3"><h1>Añadir nuevo contacto</h1></div>
+
+				<div class="input flex-nowrap mt-3">
+				Nombre completo  				
+  				<input type="text" class="form-control mt-2" placeholder="Inserta nombre completo" aria-label="Username" aria-describedby="addon-wrapping"/>
+				</div>
+
+
+				<div class="input flex-nowrap mt-3">
+				E-mail  				
+  				<input type="text" class="form-control mt-2" placeholder="Username" aria-label="Inserta e-mail" aria-describedby="addon-wrapping"/>
+				</div>
+
+				<div class="input flex-nowrap mt-3">
+				Teléfono  				
+  				<input type="number" class="form-control mt-2" placeholder="Número completo" aria-label="Inserta número completo" aria-describedby="addon-wrapping"/>
+				</div>
+
+				<div class="input flex-nowrap mt-3">
+				Dirección  				
+  				<input type="text" class="form-control mt-2" placeholder="Inserta dirección completa" aria-label="Username" aria-describedby="addon-wrapping"/>
+				</div>
+
+				<div class="d-grid gap-2 mt-3">
+  				<button class="btn btn-primary" type="button">Guardar</button>  
+				</div>
+
+				<div className="footer">
+					<Link to="/">
 				<button className="btn btn-link">Volver a la lista de contactos</button>
-			</Link></div>
+					</Link>
+				</div>
 		</div>
-			</div>
+	</div>
 			
 			
 			

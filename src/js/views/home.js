@@ -6,7 +6,7 @@ export const Home = () => {
 	return (
 		<>
 		<div className="container-fluid bg-black justify-content-end">			
-			<div className="container w-75 vh-100 bg-white d-flex justify-content-end">
+			<div className="container w-50 vh-100 bg-white d-flex justify-content-end">
 			<Link to="/demo">
 					<button className="btn btn-success mt-3 my-3 ">Añadir nuevo contacto</button>
 				</Link>
