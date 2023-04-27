@@ -7,7 +7,7 @@ import Removecontact from "../component/removecontact";
 
 
 export const Home = () => {
-	const [contact, setContacts]=useState([]);
+	const [contacts, setContacts]=useState([]);
 	const addContact=(text)=>{
 		let id = [];		
 		let contact={id:id, text: text, completed:false}
@@ -22,23 +22,21 @@ export const Home = () => {
 	};
 	return (
 		<>
-		<div className="container-fluid bg-black justify-content-end">			
-			<div className="container w-50 vh-100 bg-white d-flex justify-content-end">
+			<div className="container-fluid w-50 justify-content-end d-flex bg-white">
 				<Link to="/demo">
 					<button className="btn btn-success mt-3 my-3 ">Añadir nuevo contacto</button>
 				</Link>
-
-			<div className="container body w-50 p-5 bg-light">
+			</div>
+			
+			<div className="container w-50 vh-100 bg-white">			
 				<p><Formulario addContact={addContact} /></p>
 				
 				{contacts.map((contact)=>{
 				return (<Removecontact removeContact={removeContact} contact={contact} key={contact.id}/>
 				)
-			})}
-			</div>
-		</div>
-					
-		</div>
+				})}
+			</div>						
+		
 		</>
 	);
 };
