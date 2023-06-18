@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Formulario from "../component/formulario.js";
 import Removecontact from "../component/removecontact";
+import { Contactcard } from "../component/contactcard";
 
 
 export const Home = () => {
@@ -24,12 +25,12 @@ export const Home = () => {
 		<>
 			<div className="container-fluid w-50 justify-content-end d-flex bg-white">
 				<Link to="/demo">
-					<button className="btn btn-success mt-3 my-3 ">Añadir nuevo contacto</button>
+					<button className="btn btn-success mt-3 my-3 mx-2 ">Añadir nuevo contacto</button>
 				</Link>
 			</div>
 			
 			<div className="container w-50 vh-100 bg-white">			
-				<p><Formulario addContact={addContact} /></p>
+				<p><Contactcard/></p>
 				
 				{contacts.map((contact)=>{
 				return (<Removecontact removeContact={removeContact} contact={contact} key={contact.id}/>
