@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/demo.css";
 
-export const AddContact = () => {
+export const EditContact = () => {
 	const navigate = useNavigate()
 	const { store, actions } = useContext(Context);
 	const [data, setData] = useState({
@@ -36,7 +36,7 @@ export const AddContact = () => {
 			
 			<div className="container w-50 vh-100 bg-white">
 							
-				<div className="d-flex justify-content-center p-3"><h1>Añadir nuevo contacto</h1></div>
+				<div className="d-flex justify-content-center p-3"><h1>Editar contacto</h1></div>
 				<form onSubmit={handleSubmit}>
 				<div className="input flex-nowrap mt-3">
 				Nombre completo  				
