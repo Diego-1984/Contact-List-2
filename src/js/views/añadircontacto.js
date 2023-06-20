@@ -6,19 +6,19 @@ import "../../styles/demo.css";
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
 	const [data, setData] = useState({
-		full_name:"",
-		email:"",
-		address:"",
-		phone:"",
-		agenda_slug:"AgendaDiego"
+		full_name: "Dave Bradley",
+        email: "dve@gmail.com",
+        agenda_slug: "Diego3",
+        address:"47568 NW 34ST, 33434 FL, USA",
+        phone:"7864445566"
 
 	})
 	
-	const handleChange =(e)=>{
-		setData({...data,[e.target.name]:e.target.value})
+	const handleChange =(event)=>{
+		setData({...data,[event.target.name]:event.target.value})
 	}
-	const handleSubmit=(e)=>{
-		e.preventDefault()
+	const handleSubmit=(event)=>{
+		event.preventDefault()
 		const config = {
             method: 'POST',
             body: JSON.stringify(data),
@@ -26,14 +26,15 @@ export const AddContact = () => {
         }
         fetch('https://assets.breatheco.de/apis/fake/contact/', config)
             .then(res => res.json())
-            .catch(error => console.error('Error:', error))}
+            .catch(error => console.error('Error:', error));
+		}
 	return (
 		<div className="container-fluid bg-black">	
 			
 			<div className="container w-50 vh-100 bg-white">
 							
 				<div className="d-flex justify-content-center p-3"><h1>Añadir nuevo contacto</h1></div>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={()=>handleSubmit}>
 				<div className="input flex-nowrap mt-3">
 				Nombre completo  				
   				<input onChange={handleChange} name= "full_name" type="text" className="form-control mt-2" placeholder="Inserta nombre completo" aria-label="Username" aria-describedby="addon-wrapping"/>
