@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/demo.css";
 
-export const EditContact = () => {
+export const Editcontact = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     full_name: "",
@@ -12,21 +12,35 @@ export const EditContact = () => {
     phone: "",
   });
 
+  useEffect(() => {
+    fetch(`https://assets.breatheco.de/apis/fake/contact/${props.contactId}`)
+      .then((res) => res.json())
+      .then((response) => {
+        setData(response);
+      });
+  }, [props.contactId]);
+
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // hacemos un fetch para enviar la información a la API
+
     const config = {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     };
-    fetch("https://assets.breatheco.de/apis/fake/contact/", config)
+
+    fetch(
+      `https://assets.breatheco.de/apis/fake/contact/${props.contactId}`,
+      config
+    )
       .then((res) => res.json())
       .then((response) => navigate("/"));
   };
+
   return (
     <div className="container-fluid bg-black">
       <div className="container w-50 vh-100 bg-white">
@@ -44,6 +58,7 @@ export const EditContact = () => {
               placeholder="Inserta nombre completo"
               aria-label="Username"
               aria-describedby="addon-wrapping"
+              value={data.full_name}
             />
           </div>
 
@@ -57,6 +72,7 @@ export const EditContact = () => {
               placeholder="Username"
               aria-label="Inserta e-mail"
               aria-describedby="addon-wrapping"
+              value={data.email}
             />
           </div>
 
@@ -70,6 +86,7 @@ export const EditContact = () => {
               placeholder="Número completo"
               aria-label="Inserta número completo"
               aria-describedby="addon-wrapping"
+              value={data.phone}
             />
           </div>
 
@@ -83,6 +100,7 @@ export const EditContact = () => {
               placeholder="Inserta dirección completa"
               aria-label="Username"
               aria-describedby="addon-wrapping"
+              value={data.address}
             />
           </div>
 
@@ -98,6 +116,7 @@ export const EditContact = () => {
               Volver a la lista de contactos
             </button>
           </Link>
+
         </div>
       </div>
     </div>

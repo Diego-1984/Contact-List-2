@@ -10,8 +10,7 @@ export const Home = () => {
       .then((response) => response.json())
       .then((contacts) => {
         setContacts(contacts);
-      })
-      .then((response) => console.log(response));
+      });
   });
 
   const handleDelete = (id) => {
@@ -20,8 +19,8 @@ export const Home = () => {
     };
 
     fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, config)
-      .then((res) => res.json())
-      .catch((error) => console.error("Error:", error));
+    .then((res) => res.json()
+    );
   };
 
   return (
