@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../styles/demo.css";
-
-export const Editcontact = (props) => {
+export const Editcontact = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
     full_name: "",
@@ -11,36 +10,31 @@ export const Editcontact = (props) => {
     address: "",
     phone: "",
   });
-
+  const { id } = useParams()
   useEffect(() => {
-    fetch(`https://assets.breatheco.de/apis/fake/contact/${props.contactId}`)
+    fetch(`https://assets.breatheco.de/apis/fake/contact/${+id}`)
       .then((res) => res.json())
       .then((response) => {
         setData(response);
       });
-  }, [props.contactId]);
-
+  }, []);
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const config = {
       method: "PUT",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     };
-
     fetch(
-      `https://assets.breatheco.de/apis/fake/contact/${props.contactId}`,
+      `https://assets.breatheco.de/apis/fake/contact/${+id}`,
       config
     )
       .then((res) => res.json())
       .then((response) => navigate("/"));
   };
-
   return (
     <div className="container-fluid bg-black">
       <div className="container w-50 vh-100 bg-white">
@@ -61,7 +55,6 @@ export const Editcontact = (props) => {
               value={data.full_name}
             />
           </div>
-
           <div className="input flex-nowrap mt-3">
             E-mail
             <input
@@ -75,7 +68,6 @@ export const Editcontact = (props) => {
               value={data.email}
             />
           </div>
-
           <div className="input flex-nowrap mt-3">
             Teléfono
             <input
@@ -89,7 +81,6 @@ export const Editcontact = (props) => {
               value={data.phone}
             />
           </div>
-
           <div className="input flex-nowrap mt-3">
             Dirección
             <input
@@ -103,7 +94,6 @@ export const Editcontact = (props) => {
               value={data.address}
             />
           </div>
-
           <div className="d-grid gap-2 mt-3">
             <button className="btn btn-primary" type="submit">
               Guardar
@@ -116,9 +106,22 @@ export const Editcontact = (props) => {
               Volver a la lista de contactos
             </button>
           </Link>
-
         </div>
       </div>
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
