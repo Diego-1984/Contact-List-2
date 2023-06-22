@@ -36,7 +36,7 @@ export const Home = () => {
       <div className="container w-50 vh-100 bg-white">
         {contacts.map((contact, index) => (
           <div key={index} className="row border mx-2">
-            <div className="col-3 mt-2">
+            <div className="col-3">
               <img
                 src="https://media.istockphoto.com/id/1135031219/es/vector/usuario-miembro-de-perfil-de-icono-de-hombre-vector-de-s%C3%ADmbolo-perconal-en-fondo-aislado.jpg?s=170667a&w=0&k=20&c=vacSQk6KSFhZ8YbdZu-i83QMA4LN9MrkRb7tFUGbJcs="
                 alt="Profile"
