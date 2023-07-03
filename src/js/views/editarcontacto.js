@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../../styles/demo.css";
+
 export const Editcontact = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -12,12 +13,12 @@ export const Editcontact = () => {
   });
   const { id } = useParams()
   useEffect(() => {
-    fetch(`https://assets.breatheco.de/apis/fake/contact/${+id}`)
-      .then((res) => res.json())
-      .then((response) => {
+    fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`)
+      .then(res => res.json())
+      .then(response => {
         setData(response);
       });
-  }, []);
+  }, [id]);
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
@@ -29,7 +30,7 @@ export const Editcontact = () => {
       headers: { "Content-Type": "application/json" },
     };
     fetch(
-      `https://assets.breatheco.de/apis/fake/contact/${+id}`,
+      `https://assets.breatheco.de/apis/fake/contact/${id}`,
       config
     )
       .then((res) => res.json())

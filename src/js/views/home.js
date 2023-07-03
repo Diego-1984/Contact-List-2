@@ -66,7 +66,7 @@ export const Home = () => {
               </button>
               <br />
               <br />
-              <Link to="/editcontact/:id">
+              <Link to={`/editcontact/${contact.id}`}>
                 <button>
                   <i className="fa-solid fa-pencil"></i>
                 </button>
